@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Dashboard – DEBRIS AI Waste Platform</title>
+  <meta name="description" content="Manage eco-rewards, track smart bins, view recycling history, and check community leaderboard status on the DEBRIS Citizen Dashboard.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- ==========================================
+       TOP NAVIGATION BAR
+       ========================================== -->
+  <header class="dashboard-topbar" role="banner">
+    <div class="topbar-left">
+      <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" aria-label="Toggle Sidebar Navigation">
+        ☰
+      </button>
+      
+      <a href="index.html" class="brand-logo" title="Back to Home">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 32px; height: 32px; fill: var(--brand-primary);">
+          <path d="M12 2L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3zm0 4a3 3 0 0 1 3 3c0 1.25-.76 2.32-1.84 2.76L15 17h-2l-1.12-3.37C11.37 13.9 11 14 10.5 14A3.5 3.5 0 0 1 7 10.5C7 8.57 8.57 7 10.5 7h1.5zm0 2h-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 1.5-1.5V8z"/>
+        </svg>
+        DEBRIS<span class="text-highlight">.AI</span>
+      </a>
+
+      <!-- Search Control -->
+      <div class="topbar-search">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input type="search" placeholder="Search smart bins, rewards, activity..." aria-label="Search Dashboard">
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <!-- Notifications -->
+      <button class="btn-icon" aria-label="Notifications" style="position: relative;" onclick="showToast('Notification: You received +50 points for plastic disposal!', 'info')">
+        🔔
+        <span style="position: absolute; top: 4px; right: 4px; width: 8px; height: 8px; background: var(--status-danger); border-radius: 50%;"></span>
+      </button>
+
+      <!-- Citizen Profile Pill -->
+      <div class="user-profile-pill" data-modal-target="modal-edit-profile">
+        <div class="avatar-circle">AJ</div>
+        <div style="display: flex; flex-direction: column;">
+          <span style="font-weight: 700; font-size: 0.85rem;">Alex Johnson</span>
+          <span style="font-size: 0.725rem; color: var(--brand-primary); font-weight: 600;">Level 4 Eco Warrior</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       COLLAPSIBLE SIDEBAR
+       ========================================== -->
+  <aside class="dashboard-sidebar" role="navigation" aria-label="Dashboard Sidebar Navigation">
+    <ul class="sidebar-nav-list">
+      <li class="sidebar-nav-item">
+        <a href="#overview" class="active">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          Overview
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#nearby-bins">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Smart Bin Locator
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#activity-table">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+          Recycling Log
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#rewards-store">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Rewards & Store
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#leaderboard">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          Leaderboard
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="#profile-section">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          Profile Settings
+        </a>
+      </li>
+    </ul>
+
+    <!-- Logout -->
+    <div style="padding-top: 1rem; border-top: 1px solid var(--border-color);">
+      <a href="index.html" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: flex-start;">
+        🚪 Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MAIN DASHBOARD CONTENT AREA
+       ========================================== -->
+  <main class="dashboard-main" role="main">
+    
+    <!-- Welcome Header -->
+    <div class="dashboard-header-bar" id="overview">
+      <div>
+        <h1 style="font-size: 1.85rem;">Welcome back, Alex! 👋</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Here is your environmental impact and reward overview for today.</p>
+      </div>
+
+      <button class="btn btn-primary" onclick="showToast('AI Waste Scanner ready! Head to landing page or scan below.', 'info')">
+        📷 Quick AI Waste Scan
+      </button>
+    </div>
+
+    <!-- 1. DASHBOARD STATISTIC CARDS -->
+    <section class="stats-cards-grid" aria-label="Eco Impact Summary">
+      
+      <!-- Card 1: Reward Points -->
+      <article class="dashboard-stat-card">
+        <div class="stat-icon-wrapper stat-icon-green">🎁</div>
+        <div class="stat-card-info">
+          <h3 id="user-points-display">1,450</h3>
+          <p>Available Eco-Points</p>
+        </div>
+      </article>
+
+      <!-- Card 2: Plastic Recycled -->
+      <article class="dashboard-stat-card">
+        <div class="stat-icon-wrapper stat-icon-blue">🍾</div>
+        <div class="stat-card-info">
+          <h3>84.5 kg</h3>
+          <p>Plastic Recycled</p>
+        </div>
+      </article>
+
+      <!-- Card 3: Carbon Footprint Saved -->
+      <article class="dashboard-stat-card">
+        <div class="stat-icon-wrapper stat-icon-purple">🌱</div>
+        <div class="stat-card-info">
+          <h3>126.8 kg</h3>
+          <p>CO₂ Emissions Saved</p>
+        </div>
+      </article>
+
+      <!-- Card 4: Reports Submitted -->
+      <article class="dashboard-stat-card">
+        <div class="stat-icon-wrapper stat-icon-orange">📋</div>
+        <div class="stat-card-info">
+          <h3>24</h3>
+          <p>Waste Reports Logged</p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- 2. TWO COLUMN GRID (Recent Activity & Nearby Bins) -->
+    <div class="dashboard-grid-2col">
+      
+      <!-- Column Left: Recent Activity Data Table -->
+      <section class="dashboard-card-section" id="activity-table">
+        <div class="card-section-title">
+          <h2>Recent Recycling Activity</h2>
+          <button class="btn btn-secondary btn-sm" onclick="showToast('Exporting activity logs as CSV...', 'info')">Export CSV</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="custom-table" summary="Log of user waste disposal and points earned">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Smart Bin Location</th>
+                <th scope="col">Weight / Qty</th>
+                <th scope="col">Points</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><time datetime="2026-07-28">Jul 28, 2026</time></td>
+                <td><strong>PET Plastic Bottles</strong></td>
+                <td>Central Park North (#BIN-104)</td>
+                <td>1.4 kg (8 items)</td>
+                <td style="color: var(--brand-primary); font-weight: 700;">+35 pts</td>
+                <td><span class="status-badge status-verified">Verified</span></td>
+              </tr>
+              <tr>
+                <td><time datetime="2026-07-26">Jul 26, 2026</time></td>
+                <td><strong>Cardboard Packaging</strong></td>
+                <td>Market Square East (#BIN-208)</td>
+                <td>3.2 kg</td>
+                <td style="color: var(--brand-primary); font-weight: 700;">+45 pts</td>
+                <td><span class="status-badge status-verified">Verified</span></td>
+              </tr>
+              <tr>
+                <td><time datetime="2026-07-22">Jul 22, 2026</time></td>
+                <td><strong>Hazardous E-Waste</strong></td>
+                <td>Tech Hub Vault (#RVM-002)</td>
+                <td>1.0 kg (2 batteries)</td>
+                <td style="color: var(--brand-primary); font-weight: 700;">+100 pts</td>
+                <td><span class="status-badge status-verified">Verified</span></td>
+              </tr>
+              <tr>
+                <td><time datetime="2026-07-20">Jul 20, 2026</time></td>
+                <td><strong>Compost Organic</strong></td>
+                <td>Green Ward South (#BIN-088)</td>
+                <td>2.5 kg</td>
+                <td style="color: var(--brand-primary); font-weight: 700;">+20 pts</td>
+                <td><span class="status-badge status-pending">Pending Review</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Column Right: Community Leaderboard Widget -->
+      <section class="dashboard-card-section" id="leaderboard">
+        <div class="card-section-title">
+          <h2>Top Eco Warriors</h2>
+          <span style="font-size: 0.8rem; color: var(--brand-primary); font-weight: 700;">Ward #4 Ranking</span>
+        </div>
+
+        <div class="leaderboard-list">
+          <!-- Rank 1 -->
+          <div class="leaderboard-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <span class="user-rank rank-1">1</span>
+              <div class="avatar-circle" style="background: #F59E0B;">SL</div>
+              <div>
+                <h4 style="font-size: 0.95rem;">Sarah Lin</h4>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">3,420 Eco-Points</p>
+              </div>
+            </div>
+            <mark style="background: rgba(245, 158, 11, 0.15); color: #B45309; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">🥇 Champion</mark>
+          </div>
+
+          <!-- Rank 2 -->
+          <div class="leaderboard-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <span class="user-rank rank-2">2</span>
+              <div class="avatar-circle" style="background: #64748B;">DM</div>
+              <div>
+                <h4 style="font-size: 0.95rem;">David Miller</h4>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">2,890 Eco-Points</p>
+              </div>
+            </div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">🥈 Master</span>
+          </div>
+
+          <!-- Rank 3 -->
+          <div class="leaderboard-item">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <span class="user-rank rank-3">3</span>
+              <div class="avatar-circle" style="background: #D97706;">EK</div>
+              <div>
+                <h4 style="font-size: 0.95rem;">Elena Rostova</h4>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">2,150 Eco-Points</p>
+              </div>
+            </div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">🥉 Expert</span>
+          </div>
+
+          <!-- Rank Current User (#4) -->
+          <div class="leaderboard-item" style="border: 2px solid var(--brand-primary); background: var(--brand-primary-light);">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <span class="user-rank rank-other">4</span>
+              <div class="avatar-circle">AJ</div>
+              <div>
+                <h4 style="font-size: 0.95rem;">Alex Johnson (You)</h4>
+                <p style="font-size: 0.75rem; color: var(--brand-primary-hover); font-weight: 600;">1,450 Eco-Points</p>
+              </div>
+            </div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--brand-primary-hover);">Leader</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 3. NEARBY SMART BINS SECTION -->
+    <section class="dashboard-card-section" id="nearby-bins">
+      <div class="card-section-title">
+        <h2>Nearby Smart Bins</h2>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Live GPS Feed (Radius 1.5 km)</span>
+      </div>
+
+      <div class="nearby-bins-grid">
+        
+        <!-- Bin 1 -->
+        <article class="bin-card">
+          <div class="bin-header">
+            <h4 style="font-size: 1.1rem;">Central Square #BIN-104</h4>
+            <span class="status-badge status-verified">Available</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Category: Recyclable Plastics & Cans</p>
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 0.5rem;">
+            <span>Fill Level: 28%</span>
+            <span>Distance: 150m</span>
+          </div>
+          <div class="fill-bar-container">
+            <div class="fill-bar-progress" style="width: 28%; background: var(--brand-primary);"></div>
+          </div>
+
+          <button class="btn btn-secondary btn-sm bin-nav-btn" data-bin-id="BIN-104" data-bin-loc="Central Square Plaza" style="margin-top: 0.5rem; width: 100%;">
+            📍 Navigate Here
+          </button>
+        </article>
+
+        <!-- Bin 2 -->
+        <article class="bin-card">
+          <div class="bin-header">
+            <h4 style="font-size: 1.1rem;">Metro Station #BIN-209</h4>
+            <span class="status-badge status-pending">Near Capacity</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Category: Paper & Cardboard</p>
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 0.5rem;">
+            <span>Fill Level: 74%</span>
+            <span>Distance: 320m</span>
+          </div>
+          <div class="fill-bar-container">
+            <div class="fill-bar-progress" style="width: 74%; background: var(--status-warning);"></div>
+          </div>
+
+          <button class="btn btn-secondary btn-sm bin-nav-btn" data-bin-id="BIN-209" data-bin-loc="Metro Station Entrance B" style="margin-top: 0.5rem; width: 100%;">
+            📍 Navigate Here
+          </button>
+        </article>
+
+        <!-- Bin 3 -->
+        <article class="bin-card">
+          <div class="bin-header">
+            <h4 style="font-size: 1.1rem;">Library North #BIN-055</h4>
+            <span class="status-badge status-full">Critical (Full)</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Category: Organic Bio-Waste</p>
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 0.5rem;">
+            <span>Fill Level: 96%</span>
+            <span>Distance: 450m</span>
+          </div>
+          <div class="fill-bar-container">
+            <div class="fill-bar-progress" style="width: 96%; background: var(--status-danger);"></div>
+          </div>
+
+          <button class="btn btn-secondary btn-sm bin-nav-btn" data-bin-id="BIN-055" data-bin-loc="Public Library North Gate" style="margin-top: 0.5rem; width: 100%;">
+            📍 Navigate Here
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4. REWARDS STORE & REDEMPTION SECTION -->
+    <section class="dashboard-card-section" id="rewards-store">
+      <div class="card-section-title">
+        <h2>Eco Rewards Store</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Redeem your earned points for vouchers & perks.</p>
+      </div>
+
+      <div class="rewards-grid">
+        
+        <article class="reward-card">
+          <div class="reward-icon">☕</div>
+          <h4>$5 Coffee Coupon</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Valid at Green Bean Cafe</p>
+          <mark style="background: var(--brand-primary-light); color: var(--brand-primary-hover); font-weight: 800; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">500 Points</mark>
+          <button class="btn btn-primary btn-sm redeem-reward-btn" data-cost="500" style="width: 100%; margin-top: 0.5rem;">
+            Redeem Coupon
+          </button>
+        </article>
+
+        <article class="reward-card">
+          <div class="reward-icon">🚌</div>
+          <h4>Metro Bus Day Pass</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Unlimited City Transit for 24h</p>
+          <mark style="background: var(--brand-primary-light); color: var(--brand-primary-hover); font-weight: 800; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">800 Points</mark>
+          <button class="btn btn-primary btn-sm redeem-reward-btn" data-cost="800" style="width: 100%; margin-top: 0.5rem;">
+            Redeem Pass
+          </button>
+        </article>
+
+        <article class="reward-card">
+          <div class="reward-icon">🌱</div>
+          <h4>Tree Planting Certificate</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Plant 1 native tree in city park</p>
+          <mark style="background: var(--brand-primary-light); color: var(--brand-primary-hover); font-weight: 800; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">1,200 Points</mark>
+          <button class="btn btn-primary btn-sm redeem-reward-btn" data-cost="1200" style="width: 100%; margin-top: 0.5rem;">
+            Plant Tree
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 5. USER PROFILE SUMMARY & EDIT SECTION -->
+    <section class="dashboard-card-section" id="profile-section">
+      <div class="card-section-title">
+        <h2>Citizen Profile</h2>
+        <button class="btn btn-secondary btn-sm" data-modal-target="modal-edit-profile">Edit Profile Details</button>
+      </div>
+
+      <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+        <div class="avatar-circle" style="width: 80px; height: 80px; font-size: 2rem;">AJ</div>
+        <div>
+          <h3>Alex Johnson</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Citizen ID: #SC-904821 • Ward #4 Resident</p>
+          <p style="font-size: 0.85rem; color: var(--brand-primary); font-weight: 600; margin-top: 0.25rem;">Member since January 2025 • 42 Total Disposal Events</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+  
+  <!-- Bin Navigation Modal -->
+  <div id="modal-bin-navigate" class="modal-overlay" aria-hidden="true" role="dialog">
+    <div class="modal-box">
+      <button class="modal-close-btn">✕</button>
+      <h3>Route Guidance</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Navigating to Smart Bin <span id="nav-modal-bin-id" style="font-weight: 700; color: var(--brand-primary);">BIN-104</span></p>
+      
+      <div style="background: var(--bg-main); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center; margin-bottom: 1.5rem;">
+        <p style="font-weight: 700;" id="nav-modal-bin-loc">Central Square Plaza</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">Walk 150m East → Turn Right at Fountain → Bin on Left side</p>
+      </div>
+
+      <button class="btn btn-primary modal-cancel-btn" style="width: 100%;">Close Route Guidance</button>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="modal-edit-profile" class="modal-overlay" aria-hidden="true" role="dialog">
+    <div class="modal-box">
+      <button class="modal-close-btn">✕</button>
+      <h3>Edit Citizen Profile</h3>
+      
+      <form onsubmit="event.preventDefault(); showToast('Profile details updated!', 'success'); document.getElementById('modal-edit-profile').classList.remove('active');">
+        <div class="form-group" style="margin-top: 1rem;">
+          <label for="edit-name">Full Name</label>
+          <input type="text" id="edit-name" class="form-control" value="Alex Johnson">
+        </div>
+
+        <div class="form-group">
+          <label for="edit-ward">Assigned Ward Sector</label>
+          <select id="edit-ward" class="form-control">
+            <option value="4" selected>Ward #4 (Central District)</option>
+            <option value="1">Ward #1 (North Metro)</option>
+            <option value="2">Ward #2 (Green Innovation Valley)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- JavaScript Engine -->
+  <script src="script.js"></script>
+</body>
+</html>

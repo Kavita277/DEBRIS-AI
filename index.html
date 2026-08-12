@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEBRIS – AI-Powered Intelligent Waste Management Platform</title>
+  <meta name="description" content="DEBRIS integrates AI, IoT, and Data Analytics to optimize urban waste segregation, recycling, municipal collection, and citizen rewards for Smart Cities.">
+  
+  <!-- Modern Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="header" role="banner">
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-logo" title="DEBRIS Home">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3zm0 4a3 3 0 0 1 3 3c0 1.25-.76 2.32-1.84 2.76L15 17h-2l-1.12-3.37C11.37 13.9 11 14 10.5 14A3.5 3.5 0 0 1 7 10.5C7 8.57 8.57 7 10.5 7h1.5zm0 2h-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 1.5-1.5V8z"/>
+          </svg>
+          DEBRIS<span class="text-highlight">.AI</span>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-menu" role="menubar">
+          <li role="none"><a href="#home" class="nav-link active" role="menuitem">Home</a></li>
+          <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+          <li role="none"><a href="#features" class="nav-link" role="menuitem">Features</a></li>
+          <li role="none"><a href="#ai-scanner" class="nav-link" role="menuitem">AI Scanner</a></li>
+          <li role="none"><a href="dashboard.html" class="nav-link" role="menuitem">Citizen Dashboard</a></li>
+          <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+        </ul>
+
+        <!-- Action Controls -->
+        <div class="nav-actions">
+          <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+          
+          <button class="btn btn-outline btn-sm" data-modal-target="modal-login">
+            Login
+          </button>
+          
+          <a href="dashboard.html" class="btn btn-primary btn-sm">
+            Launch Platform
+          </a>
+
+          <button class="hamburger-btn" aria-label="Open Mobile Menu">
+            ☰
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT
+       ========================================== -->
+  <main id="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Content -->
+          <article class="hero-content">
+            <div class="badge">
+              <span class="pulse-dot"></span> Next-Gen Smart City Infrastructure
+            </div>
+            
+            <h1>
+              Intelligent Waste Management <br>
+              <span class="gradient-text">Powered by AI & IoT</span>
+            </h1>
+            
+            <p class="hero-description">
+              DEBRIS revolutionizes municipal waste infrastructure by combining computer vision AI, real-time IoT bin monitoring, carbon analytics, and gamified citizen eco-rewards for a cleaner future.
+            </p>
+            
+            <div class="hero-buttons">
+              <a href="dashboard.html" class="btn btn-primary">
+                Get Started Now →
+              </a>
+              <a href="#features" class="btn btn-secondary">
+                Explore Features
+              </a>
+            </div>
+
+            <!-- Mini Live Stat Highlights -->
+            <div class="hero-stats-mini">
+              <div class="mini-stat-item">
+                <h4 class="stat-number" data-target="99" data-suffix="%">0%</h4>
+                <p>AI Classification Accuracy</p>
+              </div>
+              <div class="mini-stat-item">
+                <h4 class="stat-number" data-target="45" data-suffix="%">0%</h4>
+                <p>Route CO₂ Reduction</p>
+              </div>
+              <div class="mini-stat-item">
+                <h4 class="stat-number" data-target="1250" data-prefix="" data-suffix="+">0</h4>
+                <p>Smart Bins Connected</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hero Glassmorphism Visual Widget -->
+          <figure class="hero-visual">
+            <div class="hero-card">
+              <div class="ai-badge-header">
+                <span class="ai-status-indicator">
+                  <span class="pulse-dot"></span> IoT Node #BIN-402 Online
+                </span>
+                <mark style="background: var(--brand-primary-light); color: var(--brand-primary-hover); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">LIVE DEMO</mark>
+              </div>
+
+              <div class="bin-visual-demo">
+                <div class="bin-icon-wrapper">
+                  <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </div>
+                <h3>Smart Bin Status: <span style="color: var(--brand-primary);">Optimal</span></h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Location: City Center Plaza East</p>
+
+                <!-- Live Capacity Bar -->
+                <div class="fill-bar-container" title="Bin Fill Level">
+                  <div class="fill-bar-progress" style="width: 68%;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-muted);">
+                  <span>Current Volume: 68%</span>
+                  <span>Battery: 94%</span>
+                </div>
+              </div>
+
+              <!-- Floating Micro Glass Cards -->
+              <div class="floating-element floating-element-1">
+                <span style="font-size: 1.25rem;">♻️</span>
+                <div>
+                  <h5 style="font-size: 0.85rem;">Plastic Recycled</h5>
+                  <p style="font-size: 0.75rem; color: var(--brand-primary); font-weight: 700;">+12.4 kg today</p>
+                </div>
+              </div>
+
+              <div class="floating-element floating-element-2">
+                <span style="font-size: 1.25rem;">🎁</span>
+                <div>
+                  <h5 style="font-size: 0.85rem;">Reward Earned</h5>
+                  <p style="font-size: 0.75rem; color: var(--brand-accent); font-weight: 700;">+50 Eco-Points</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT SECTION -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          
+          <!-- Graphic Container -->
+          <div class="about-image-card">
+            <span class="badge">Platform Vision</span>
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Transforming Municipal Waste into Sustainable Smart Resources</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+              Traditional waste collection leads to overflowing bins, inefficient truck routes, high carbon emissions, and low recycling rates. DEBRIS combines edge AI devices, telemetry sensors, and citizen empowerment to build clean zero-waste cities.
+            </p>
+            
+            <!-- Key Pillars Grid -->
+            <div class="about-pillars">
+              <div class="pillar-item">
+                <div class="pillar-icon">🤖</div>
+                <div>
+                  <h4>Computer Vision</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">Instant waste item classification at the bin level.</p>
+                </div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon">📡</div>
+                <div>
+                  <h4>IoT Telemetry</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">Real-time fill level & odor sensor monitoring.</p>
+                </div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon">🌱</div>
+                <div>
+                  <h4>Eco Gamification</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">Earn redeemable points for proper disposal.</p>
+                </div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon">🚛</div>
+                <div>
+                  <h4>Smart Dispatch</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">Dynamic garbage truck route optimization.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Details -->
+          <article class="about-content">
+            <span class="badge">Why DEBRIS?</span>
+            <h2 class="section-title" style="text-align: left;">End-to-End Circular Economy Ecosystem</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.25rem;">
+              DEBRIS (Digital Eco-Bin Robotics & Intelligent System) bridges the gap between citizens, municipal authorities, and recycling facilities. Our platform provides automated sorting guides, real-time bin locations, and analytical insights.
+            </p>
+
+            <ul style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+              <li style="display: flex; align-items: center; gap: 0.75rem; font-weight: 500;">
+                <span style="color: var(--brand-primary); font-size: 1.25rem;">✓</span> Automated classification reduces contamination in recycling bins by 82%.
+              </li>
+              <li style="display: flex; align-items: center; gap: 0.75rem; font-weight: 500;">
+                <span style="color: var(--brand-primary); font-size: 1.25rem;">✓</span> Dynamic truck routing reduces municipal fuel consumption and CO₂ emissions.
+              </li>
+              <li style="display: flex; align-items: center; gap: 0.75rem; font-weight: 500;">
+                <span style="color: var(--brand-primary); font-size: 1.25rem;">✓</span> Reverse Vending Machine (RVM) integration rewards instant cashbacks & bus coupons.
+              </li>
+            </ul>
+
+            <a href="dashboard.html" class="btn btn-primary">
+              View Citizen Portal
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FEATURES SECTION (8 Cards Grid) -->
+    <section id="features" class="features">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="badge">Intelligent Features</span>
+          <h2 class="section-title">Everything Needed for Modern Waste Intelligence</h2>
+          <p class="section-description">
+            Explore our state-of-the-art tools designed for citizens, municipal operators, and environmental analysts.
+          </p>
+        </header>
+
+        <div class="features-grid">
+          
+          <!-- Card 1 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🔍</div>
+            <h3>AI Waste Scanner</h3>
+            <p>Snap a photo of any item to get instant AI classification (Organic, Plastic, E-Waste, Paper) and optimal disposal guidance.</p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">📊</div>
+            <h3>Smart Bin Monitoring</h3>
+            <p>Real-time ultrasonic sensors continuously measure bin fill levels, temperature, and odor thresholds to prevent overflows.</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🗺️</div>
+            <h3>GPS Bin Locator</h3>
+            <p>Interactive city map showing nearest available smart bins, active category types, and turn-by-turn navigation.</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🏅</div>
+            <h3>Reward Points & Eco-Credits</h3>
+            <p>Earn points every time you recycle or report waste, redeemable for public transit passes, coffee vouchers, and utility discounts.</p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🏛️</div>
+            <h3>Municipal Analytics Dashboard</h3>
+            <p>Comprehensive fleet management portal for city officials to monitor waste volume trends, truck health, and neighborhood compliance.</p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🚛</div>
+            <h3>Collection Route Optimization</h3>
+            <p>AI pathfinding algorithms auto-generate optimal collection schedules based on bin priority levels to save time & fuel.</p>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🏆</div>
+            <h3>Community Leaderboard</h3>
+            <p>Gamified neighborhood rankings that encourage friendly competition between wards and communities to achieve zero-waste goals.</p>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="feature-card">
+            <div class="feature-icon-box">🎰</div>
+            <h3>Reverse Vending Machine (RVM)</h3>
+            <p>Automated kiosks that accept plastic bottles and aluminum cans, giving instant digital tokens and digital wallet cashbacks.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. LIVE INTERACTIVE AI SCANNER SIMULATOR SECTION -->
+    <section id="ai-scanner" class="ai-scanner-section">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="badge">Interactive Simulation</span>
+          <h2 class="section-title">Try the AI Waste Classification Engine</h2>
+          <p class="section-description">
+            Select a sample waste item below to simulate real-time AI recognition, confidence rating, and eco-point calculations.
+          </p>
+        </header>
+
+        <div class="scanner-container">
+          
+          <!-- Sample Selector Controls -->
+          <div class="scanner-controls">
+            <button class="scanner-preset-btn active" data-item="plastic">
+              <span>🍾</span> Plastic Bottle
+            </button>
+            <button class="scanner-preset-btn" data-item="organic">
+              <span>🍎</span> Apple Core
+            </button>
+            <button class="scanner-preset-btn" data-item="ewaste">
+              <span>🔋</span> E-Waste Battery
+            </button>
+            <button class="scanner-preset-btn" data-item="paper">
+              <span>📦</span> Cardboard Box
+            </button>
+          </div>
+
+          <!-- Preview & Result Workspace -->
+          <div class="scanner-preview-area">
+            
+            <figure class="scanner-viewport">
+              <img id="scanner-target-img" src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?w=500&auto=format&fit=crop&q=80" alt="Selected Waste Sample for AI Scanning">
+              <div class="scan-laser-line"></div>
+            </figure>
+
+            <div class="scan-results-box">
+              <div class="result-card">
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Detected Object</span>
+                <h3 id="res-item-title" style="font-size: 1.35rem; margin-top: 0.25rem;">PET Water Bottle</h3>
+                <p id="res-item-category" style="color: var(--brand-primary); font-weight: 600; font-size: 0.95rem;">Recyclable Plastic</p>
+              </div>
+
+              <div class="result-card">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;">
+                  <span>AI Confidence Score</span>
+                  <span id="res-confidence-text" style="color: var(--brand-primary);">98.4%</span>
+                </div>
+                <div class="confidence-bar">
+                  <div id="res-confidence-fill" class="confidence-fill" style="width: 98.4%;"></div>
+                </div>
+              </div>
+
+              <div class="result-card" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Recommended Bin:</span>
+                  <p id="res-item-bin" style="font-weight: 700; color: #0EA5E9;">Blue Smart Bin (Recycling)</p>
+                </div>
+                <mark id="res-item-points" style="background: var(--brand-primary-light); color: var(--brand-primary-hover); font-weight: 800; padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.9rem;">
+                  +15 Eco-Points
+                </mark>
+              </div>
+
+              <p id="res-item-instructions" style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
+                Rinse thoroughly, flatten bottle, and remove cap before disposal.
+              </p>
+
+              <button id="run-scan-btn" class="btn btn-primary" style="margin-top: 0.5rem;">
+                ⚡ Run AI Scan Animation
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. STATISTICS COUNTER SECTION -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          
+          <div class="stat-box">
+            <h3 class="stat-number" data-target="14250" data-suffix=" kg">0 kg</h3>
+            <p class="stat-label">Carbon Footprint Saved</p>
+          </div>
+
+          <div class="stat-box">
+            <h3 class="stat-number" data-target="48900" data-suffix=" kg">0 kg</h3>
+            <p class="stat-label">Plastic Material Recycled</p>
+          </div>
+
+          <div class="stat-box">
+            <h3 class="stat-number" data-target="1250" data-suffix="+">0</h3>
+            <p class="stat-label">Smart Bins Installed</p>
+          </div>
+
+          <div class="stat-box">
+            <h3 class="stat-number" data-target="35000" data-suffix="+">0</h3>
+            <p class="stat-label">Registered Eco Citizens</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="badge">Get in Touch</span>
+          <h2 class="section-title">Contact DEBRIS Team</h2>
+          <p class="section-description">
+            Have questions about deploying DEBRIS in your municipality, school, or residential community? Drop us a message below.
+          </p>
+        </header>
+
+        <div class="contact-grid">
+          
+          <!-- Contact Info Box -->
+          <article class="contact-info-box">
+            <h3>We'd Love to Hear From You</h3>
+            <p style="color: var(--text-muted);">
+              Our Smart City engineers and support specialists are available 24/7 to assist with platform deployment, sensor integration, and municipal partnerships.
+            </p>
+
+            <div class="contact-info-list">
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <h5 style="font-size: 1rem;">Headquarters</h5>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">Green Innovation Hub, Smart City Sector 4, Silicon Valley</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                  <h5 style="font-size: 1rem;">Email Inquiries</h5>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">contact@debris-smartcity.org</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                  <h5 style="font-size: 1rem;">Hotline Support</h5>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">+1 (800) 555-DEBRIS</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Fully Validated Contact Form -->
+          <div class="contact-form-card">
+            <form id="contact-form" action="#" method="POST" novalidate>
+              <fieldset style="border: none; margin: 0; padding: 0;">
+                <legend class="sr-only" style="display:none;">Contact Support Form</legend>
+                
+                <div class="form-group">
+                  <label for="contact-name">Full Name *</label>
+                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="e.g. Alex Johnson" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email">Email Address *</label>
+                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="alex@example.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-category">Inquiry Type</label>
+                  <select id="contact-category" name="category" class="form-control">
+                    <option value="general">General Support</option>
+                    <option value="municipal">Municipal Partnership</option>
+                    <option value="sensor">IoT Sensor Installation</option>
+                    <option value="rewards">Reward Redemption Issue</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message">Message *</label>
+                  <textarea id="contact-message" name="message" class="form-control" placeholder="Tell us how we can help you..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  Send Message 🚀
+                </button>
+              </fieldset>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <h2>DEBRIS<span style="color: var(--brand-primary);">.AI</span></h2>
+          <p>
+            An AI-Powered Intelligent Waste Management Platform engineering cleaner, greener, and smarter sustainable urban ecosystems.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Twitter">🌐</a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">💼</a>
+            <a href="#" class="social-btn" aria-label="GitHub">💻</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About DEBRIS</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#ai-scanner">AI Scanner</a></li>
+            <li><a href="dashboard.html">Citizen Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <h4 class="footer-title">Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="#">Smart Bin Telemetry</a></li>
+            <li><a href="#">Route Optimization</a></li>
+            <li><a href="#">Reverse Vending</a></li>
+            <li><a href="#">Municipal API</a></li>
+            <li><a href="#">Impact Reports</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="footer-title">Stay Updated</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 1rem;">Subscribe to our Smart City newsletter for eco updates.</p>
+          <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); alert('Subscribed to DEBRIS newsletter!');">
+            <input type="email" placeholder="Enter email..." class="form-control" style="font-size: 0.85rem;" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 DEBRIS Platform. All Rights Reserved. Smart City Eco-Project.</p>
+        <p>Built with pure HTML5, CSS3, & Vanilla JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       LOGIN / SIGNUP MODAL DIALOG
+       ========================================== -->
+  <div id="modal-login" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-login-title">
+    <div class="modal-box">
+      <button class="modal-close-btn" aria-label="Close Modal">✕</button>
+      <h3 id="modal-login-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Citizen Portal Sign In</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Access your rewards, bin history, and leaderboard status.</p>
+
+      <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+        <div class="form-group">
+          <label for="login-email">Email or Citizen ID</label>
+          <input type="email" id="login-email" class="form-control" placeholder="citizen@smartcity.org" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+          Sign In to Dashboard
+        </button>
+        <p style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">
+          New to DEBRIS.AI? <a href="registration.html">Create an account</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- JavaScript Engine -->
+  <script src="script.js"></script>
+</body>
+</html>

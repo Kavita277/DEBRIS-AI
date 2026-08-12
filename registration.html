@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEBRIS.AI – Registration</title>
+  <meta name="description" content="Create a DEBRIS.AI citizen account for smart waste management and eco-rewards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="registration-page">
+
+  <header class="header" role="banner">
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo" title="DEBRIS Home">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3zm0 4a3 3 0 0 1 3 3c0 1.25-.76 2.32-1.84 2.76L15 17h-2l-1.12-3.37C11.37 13.9 11 14 10.5 14A3.5 3.5 0 0 1 7 10.5C7 8.57 8.57 7 10.5 7h1.5zm0 2h-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 1.5-1.5V8z"/>
+          </svg>
+          DEBRIS<span class="text-highlight">.AI</span>
+        </a>
+        <div class="nav-actions">
+          <button class="btn-icon theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <a href="index.html" class="btn btn-outline btn-sm">Back to Home</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="registration-main">
+    <div class="container">
+      <div class="registration-layout">
+        <section class="registration-intro">
+          <span class="badge"><span class="pulse-dot"></span> Join the DEBRIS.AI Community</span>
+          <h1>Build a <span class="gradient-text">Cleaner Future.</span></h1>
+          <p>Register to track your recycling activity, earn Eco-Points, report waste issues, and participate in smart city initiatives.</p>
+
+          <div class="registration-benefits">
+            <article class="registration-benefit">
+              <span class="benefit-icon">♻️</span>
+              <div><h3>Recycle & Earn</h3><p>Get Eco-Points for responsible disposal.</p></div>
+            </article>
+            <article class="registration-benefit">
+              <span class="benefit-icon">📍</span>
+              <div><h3>Smart City Access</h3><p>Find smart bins and report local waste issues.</p></div>
+            </article>
+            <article class="registration-benefit">
+              <span class="benefit-icon">🌱</span>
+              <div><h3>Track Your Impact</h3><p>See your recycling and sustainability progress.</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="registration-card" aria-labelledby="registration-title">
+          <div class="registration-card-header">
+            <span class="badge">Citizen Registration</span>
+            <h2 id="registration-title">Create Your Account</h2>
+            <p>Enter your details to get started with DEBRIS.AI.</p>
+          </div>
+
+          <form id="registrationForm" novalidate>
+            <div class="registration-form-grid">
+              <div class="form-group">
+                <label for="firstName">First Name <span>*</span></label>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="e.g. Kavita" autocomplete="given-name">
+                <small id="firstNameError" class="form-error-msg"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Last Name <span>*</span></label>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="e.g. Gupta" autocomplete="family-name">
+                <small id="lastNameError" class="form-error-msg"></small>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="password">Password <span>*</span></label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Minimum 6 characters" autocomplete="new-password">
+                <small id="passwordError" class="form-error-msg"></small>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="email">E-mail ID <span>*</span></label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="name@domain.com" autocomplete="email">
+                <small id="emailError" class="form-error-msg"></small>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="mobile">Mobile Number <span>*</span></label>
+                <input type="tel" id="mobile" name="mobile" class="form-control" placeholder="10 digit mobile number" inputmode="numeric" maxlength="10" autocomplete="tel">
+                <small id="mobileError" class="form-error-msg"></small>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="address">Address <span>*</span></label>
+                <textarea id="address" name="address" class="form-control" rows="3" placeholder="Enter your address" autocomplete="street-address"></textarea>
+                <small id="addressError" class="form-error-msg"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" class="form-control" placeholder="e.g. Mumbai" autocomplete="address-level2">
+              </div>
+
+              <div class="form-group">
+                <label for="userType">User Type</label>
+                <select id="userType" name="userType" class="form-control">
+                  <option value="">Select user type</option>
+                  <option value="citizen">Citizen</option>
+                  <option value="worker">Municipal Worker</option>
+                  <option value="authority">Municipal Authority</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary registration-submit">Create Account</button>
+            <p id="registrationSuccess" class="registration-success" role="status"></p>
+            <p class="registration-login-text">Already registered? <a href="index.html" onclick="event.preventDefault(); window.location.href='index.html';">Sign in from the home page</a></p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="registration-footer">
+    <p>&copy; 2026 DEBRIS.AI. Smart City Eco-Project.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
