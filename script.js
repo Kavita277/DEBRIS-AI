@@ -375,7 +375,223 @@ function initDashboardControls() {
     });
   });
 }
+   /* ==========================================================================
+   8. WASTE ISSUE REPORTING
+   ========================================================================== */
 
+function initWasteReporting() {
+
+  const reportForm = document.getElementById('waste-report-form');
+  const locationBtn = document.getElementById('get-location-btn');
+  const imageInput = document.getElementById('report-image');
+
+  if (!reportForm) return;
+
+
+  /* -----------------------------
+     GET CURRENT LOCATION
+  ----------------------------- */
+
+  if (locationBtn) {
+
+    locationBtn.addEventListener('click', () => {
+
+      const locationStatus =
+        document.getElementById('location-status');
+
+      if (!navigator.geolocation) {
+
+        locationStatus.textContent =
+          'Geolocation is not supported by this browser.';
+
+        return;
+      }
+
+      locationStatus.textContent =
+        'Detecting your location...';
+
+      navigator.geolocation.getCurrentPosition(
+
+        (position) => {
+
+          const latitude =
+            position.coords.latitude;
+
+          const longitude =
+            position.coords.longitude;
+
+          document.getElementById('location-details').style.display =
+            'block';
+
+          document.getElementById('detected-location').textContent =
+            'Location detected successfully';
+
+          document.getElementById('coordinates').textContent =
+            `Latitude: ${latitude.toFixed(6)} • Longitude: ${longitude.toFixed(6)}`;
+
+          locationStatus.textContent =
+            '✓ GPS location verified';
+
+          locationStatus.style.color =
+            'var(--status-success)';
+
+          // Store coordinates for submission
+          reportForm.dataset.latitude = latitude;
+          reportForm.dataset.longitude = longitude;
+
+        },
+
+        () => {
+
+          locationStatus.textContent =
+            'Unable to detect location. Please allow location access.';
+
+          locationStatus.style.color =
+            'var(--status-danger)';
+
+        }
+
+      );
+
+    });
+
+  }
+
+
+  /* -----------------------------
+     IMAGE PREVIEW
+  ----------------------------- */
+
+  if (imageInput) {
+
+    imageInput.addEventListener('change', (event) => {
+
+      const file = event.target.files[0];
+
+      if (!file) return;
+
+      const preview =
+        document.getElementById('report-image-preview');
+
+      const previewContainer =
+        document.getElementById('image-preview-container');
+
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+
+        preview.src = e.target.result;
+
+        previewContainer.style.display = 'block';
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+  }
+
+
+  /* -----------------------------
+     SUBMIT REPORT
+  ----------------------------- */
+
+  reportForm.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    const issueType =
+      document.getElementById('report-type').value;
+
+    const binId =
+      document.getElementById('reported-bin').value;
+
+    const description =
+      document.getElementById('report-description').value;
+
+    const latitude =
+      reportForm.dataset.latitude;
+
+    const longitude =
+      reportForm.dataset.longitude;
+
+
+    if (!issueType) {
+
+      showToast(
+        'Please select an issue type.',
+        'error'
+      );
+
+      return;
+
+    }
+
+
+    if (!latitude || !longitude) {
+
+      showToast(
+        'Please verify your location before submitting.',
+        'error'
+      );
+
+      return;
+
+    }
+
+
+    // Generate temporary report ID
+    const reportId =
+      'DR-' +
+      Math.floor(1000 + Math.random() * 9000);
+
+
+    // Display success panel
+    document.getElementById(
+      'generated-report-id'
+    ).textContent = reportId;
+
+    document.getElementById(
+      'submitted-location'
+    ).textContent = 'GPS Verified';
+
+
+    document.getElementById(
+      'report-success'
+    ).style.display = 'block';
+
+
+    // Update report count
+    const reportCards =
+      document.querySelectorAll(
+        '.dashboard-stat-card'
+      );
+
+    // Reset form
+    reportForm.reset();
+
+    document.getElementById(
+      'location-details'
+    ).style.display = 'none';
+
+    document.getElementById(
+      'location-status'
+    ).textContent = 'Location not detected';
+
+    document.getElementById(
+      'image-preview-container'
+    ).style.display = 'none';
+
+
+    showToast(
+      `Waste report ${reportId} submitted successfully!`,
+      'success'
+    );
+
+  });
+
+}
 /* ==========================================================================
    8. Rewards & Gamification Engine
    ========================================================================== */
@@ -529,3 +745,4 @@ function initRegistrationValidation() {
     input.classList.remove('input-error');
   }
 }
+initWasteReporting();

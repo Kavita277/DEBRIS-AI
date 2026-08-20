@@ -81,6 +81,17 @@
         </a>
       </li>
       <li class="sidebar-nav-item">
+       <a href="#report-waste">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 11v2a2 2 0 0 0 2 2h2l3 5h2l-2.5-5H12l7 3V6l-7 3H5a2 2 0 0 0-2 2z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M19 9.5a3 3 0 0 1 0 5"/>
+    </svg>
+        Report Waste Issue
+      </a>
+      </li>
+      <li class="sidebar-nav-item">
         <a href="#activity-table">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
           Recycling Log
@@ -371,7 +382,343 @@
 
       </div>
     </section>
+    
+    <!-- 4. REPORT WASTE ISSUE SECTION -->
+<section class="dashboard-card-section" id="report-waste">
 
+  <div class="card-section-title">
+    <div>
+      <h2>Report Waste Issue</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+        Report an overflowing or uncollected bin and help keep your neighborhood clean.
+      </p>
+    </div>
+
+    <span class="status-badge status-pending">
+      Municipal Response
+    </span>
+  </div>
+
+  <form id="waste-report-form">
+
+    <!-- Issue Type -->
+    <div class="form-group">
+      <label for="report-type">Issue Type</label>
+
+      <select id="report-type" class="form-control" required>
+        <option value="">Select an issue</option>
+        <option value="overfilled">Overfilled Dustbin</option>
+        <option value="not-collected">Dustbin Not Collected</option>
+        <option value="waste-around-bin">Waste Around Dustbin</option>
+        <option value="damaged-bin">Damaged Dustbin</option>
+      </select>
+    </div>
+
+
+    <!-- Location -->
+    <div class="form-group">
+
+      <label>Location</label>
+
+      <div style="
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      ">
+
+        <button
+          type="button"
+          id="get-location-btn"
+          class="btn btn-secondary"
+        >
+          📍 Use My Current Location
+        </button>
+
+        <span
+          id="location-status"
+          style="
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+          "
+        >
+          Location not detected
+        </span>
+
+      </div>
+
+      <div
+        id="location-details"
+        style="
+          display: none;
+          margin-top: 0.75rem;
+          padding: 0.9rem 1rem;
+          background: var(--bg-main);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-md);
+        "
+      >
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <span style="font-size: 1.25rem;">📍</span>
+
+          <div>
+            <strong id="detected-location">
+              Location detected
+            </strong>
+
+            <p
+              id="coordinates"
+              style="
+                font-size: 0.78rem;
+                color: var(--text-muted);
+                margin-top: 0.2rem;
+              "
+            ></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Nearby Bin -->
+    <div class="form-group">
+
+      <label for="reported-bin">
+        Nearby Smart Bin
+        <span style="font-weight: 400; color: var(--text-muted);">
+          (Optional)
+        </span>
+      </label>
+
+      <select id="reported-bin" class="form-control">
+
+        <option value="">
+          Select nearby bin
+        </option>
+
+        <option value="BIN-104">
+          Central Square #BIN-104
+        </option>
+
+        <option value="BIN-209">
+          Metro Station #BIN-209
+        </option>
+
+        <option value="BIN-055">
+          Library North #BIN-055
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- Image Upload -->
+    <div class="form-group">
+
+      <label for="report-image">
+        Photo Evidence
+      </label>
+
+      <div
+        style="
+          border: 2px dashed var(--border-color);
+          border-radius: var(--radius-md);
+          padding: 1.5rem;
+          text-align: center;
+          background: var(--bg-main);
+        "
+      >
+
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">
+          📷
+        </div>
+
+        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+          Upload a photo of the issue
+        </p>
+
+        <p style="
+          font-size: 0.8rem;
+          color: var(--text-muted);
+          margin-bottom: 0.75rem;
+        ">
+          JPG, PNG or WEBP
+        </p>
+
+        <label
+          for="report-image"
+          class="btn btn-secondary btn-sm"
+          style="cursor: pointer;"
+        >
+          Choose Image
+        </label>
+
+        <input
+          type="file"
+          id="report-image"
+          accept="image/*"
+          style="display: none;"
+        >
+
+      </div>
+
+      <!-- Image Preview -->
+      <div
+        id="image-preview-container"
+        style="
+          display: none;
+          margin-top: 1rem;
+        "
+      >
+
+        <img
+          id="report-image-preview"
+          src=""
+          alt="Waste issue preview"
+          style="
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+          "
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- Description -->
+    <div class="form-group">
+
+      <label for="report-description">
+        Additional Details
+      </label>
+
+      <textarea
+        id="report-description"
+        class="form-control"
+        rows="4"
+        placeholder="Describe the issue, for example: Bin has been overflowing since yesterday..."
+      ></textarea>
+
+    </div>
+
+
+    <!-- Submit -->
+    <div style="
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    ">
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        id="submit-report-btn"
+      >
+        🚨 Submit Waste Report
+      </button>
+
+    </div>
+
+  </form>
+
+
+  <!-- Submitted Report Status -->
+  <div
+    id="report-success"
+    style="
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-main);
+    "
+  >
+
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    ">
+
+      <span style="font-size: 1.5rem;">✅</span>
+
+      <div>
+        <h3 style="margin: 0;">
+          Report Submitted Successfully
+        </h3>
+
+        <p style="
+          font-size: 0.8rem;
+          color: var(--text-muted);
+          margin-top: 0.2rem;
+        ">
+          Municipal authorities have been notified.
+        </p>
+      </div>
+
+    </div>
+
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+    ">
+      <div>
+        <span style="
+          font-size: 0.75rem;
+          color: var(--text-muted);
+        ">
+          Report ID
+        </span>
+        <strong
+          id="generated-report-id"
+          style="display: block;"
+        >
+          DR-1024
+        </strong>
+      </div>
+      <div>
+        <span style="
+          font-size: 0.75rem;
+          color: var(--text-muted);
+        ">
+          Status
+        </span>
+        <strong
+          style="
+            display: block;
+            color: var(--status-warning);
+          "
+        >
+          Awaiting Truck Assignment
+        </strong>
+      </div>
+      <div>
+        <span style="
+          font-size: 0.75rem;
+          color: var(--text-muted);
+        ">
+          Location
+        </span>
+        <strong
+          id="submitted-location"
+          style="display: block;"
+        >
+          GPS Verified
+           </strong>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- 4. REWARDS STORE & REDEMPTION SECTION -->
     <section class="dashboard-card-section" id="rewards-store">
       <div class="card-section-title">
